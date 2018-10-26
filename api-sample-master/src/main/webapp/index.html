@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="application/x-www-form-urlencoded; charset=UTF-8"/>
+
+<title>Check stuff</title>
+</head>
+<body>
+
+<h1>Hope it works.</h1>
+
+<table id ="mytable">
+    <tr>
+      <td></td>
+      <td>
+      </td>
+    </tr>
+</table>
+
+
+<input type="button" value="Get all movies" onclick="httpGet()">
+
+<script>
+
+
+function httpGet(theUrl) {
+    var xmlHttp = new XMLHttpRequest();
+    var url = "http://localhost:8080/movieapp/api/movie/getAllMovies"
+    xmlHttp.open( "GET", url, false ); // false for synchronous request
+    xmlHttp.send( null );
+    var data = xmlHttp.responseText;
+    
+    var jsonResponse = JSON.parse(data);
+	console.log(jsonResponse[0]);
+	
+    document.getElementById("mytable").innerHTML = xmlHttp.responseText;
+    
+    
+}
+
+
+</script>
+
+</body>
+</html>
